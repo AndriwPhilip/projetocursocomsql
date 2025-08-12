@@ -25,7 +25,6 @@ public class SingleConnection {
 				Class.forName("org.postgresql.Driver");
 				connection = DriverManager.getConnection(url, user, password);
 				connection.setAutoCommit(false);//Nao salvar automaticamente o insert/update/delete.
-				System.out.println("Conectado Ao Banco de Dados");
 			}
 			
 		} catch (Exception e) {
