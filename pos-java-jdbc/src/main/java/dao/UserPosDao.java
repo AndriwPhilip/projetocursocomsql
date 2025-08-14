@@ -166,5 +166,33 @@ public class UserPosDao {
 			e.printStackTrace();
 		}
 	}
+	
+	public void deleteFonesPorUser(Long idUser) {
+		
+		try {
+			String sqlFone = "delete from telefoneuser where usuariopessoa = " + idUser;
+			String sqlUser = "delete from userposjava where id = " + idUser;
+			
+			//Deletar do banco primeiro os dados Filho
+			PreparedStatement preparedStatement = connection.prepareStatement(sqlFone);
+			preparedStatement.executeUpdate();
+			connection.commit();
+			
+			//Deletar do banco os dados PAI
+			preparedStatement = connection.prepareStatement(sqlUser);
+			preparedStatement.executeUpdate();
+			connection.commit();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		}
+		
+		
+	}
 
 }

@@ -1,5 +1,6 @@
 package pos_java_jdbc.pos_java_jdbc;
 
+import java.sql.PreparedStatement;
 import java.util.List;
 
 import org.junit.Test;
@@ -106,6 +107,15 @@ public class TesteBancoJdbc {
 		}
 		
 	}
+	
+	@Test
+	public void testDeleteUserFone() {
+		
+		UserPosDao dao = new UserPosDao();
+		dao.deleteFonesPorUser(3L);
+		
+	}
+	
 	
 
 }
